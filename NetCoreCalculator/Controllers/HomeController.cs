@@ -19,8 +19,23 @@ namespace NetCoreCalculator.Controllers
         [HttpPost]
         public IActionResult Index( Operation model )
         {
-            if ( model.OperationType == OperationType.Addition )
-                model.Result = model.NumberA + model.NumberB;
+            switch(model.OperationType)
+            {
+                case OperationType.Addition:
+                    model.Result = model.NumberA + model.NumberB;
+                    break;
+                case OperationType.Multiplication:
+                    model.Result = model.NumberA * model.NumberB;
+                    break;
+                case OperationType.Subtraction:
+                    model.Result = model.NumberA - model.NumberB;
+                    break;
+                case OperationType.Division:
+                    model.Result = model.NumberA / model.NumberB;
+                    break;
+
+
+            }
             return View( model );
         }
     }
